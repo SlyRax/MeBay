@@ -3,7 +3,7 @@ class AdsController < ApplicationController
     @ad = Ad.new
   end
   def create 
-    @ad = Ad.new(params[:ad])
+    @ad = Ad.new(ad_params)
     @ad.save
   end
 	def show
@@ -12,5 +12,10 @@ class AdsController < ApplicationController
 	def index
 		@ads = Ad.find(:all)
 	end
+	
+	private 
+	 def ad_params
+	     params.require(:ad).permit(:name, :description, :price, :seller_id, :email, :img_url)
+	 end
 	
 end
