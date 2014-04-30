@@ -5,6 +5,7 @@ class AdsController < ApplicationController
   def create 
     @ad = Ad.new(ad_params)
     @ad.save
+    redirect_to "/ads/#{@ad.id}"
   end
 	def show
 		@ad = Ad.find(params[:id])
